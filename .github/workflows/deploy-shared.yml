@@ -1,0 +1,28 @@
+name: Deploy Bicep (Subscription-level)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Subscription-level Bicep
+        run: |
+          az account set --subscription 4d6302be-05c4-4bb7-b94f-2805445f5d1c
+          az deployment sub create \
+            --location southeastasia \
+            --template-file bicep/rg-portfolio-shared.bicep \
+            --parameters env=dev

@@ -28,7 +28,7 @@ resource resGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 /* -----------------------------
    2️⃣ App Service Plan
 --------------------------------*/
-module appService 'shared/appserviceplan.bicep' = {
+module appServicePlan 'shared/appserviceplan.bicep' = {
   name: 'appServicePlanModule'
   params: {
     location: location
@@ -84,7 +84,7 @@ module keyVault 'shared/keyvault.bicep' = {
   params: {
     env: env
     location: location
-    appName: 'portfolio-dev'
+    appName: 'portfolio-game'
   }
   scope: resourceGroup(rgName)
   dependsOn: [
@@ -102,3 +102,19 @@ module sqlSecret 'shared/keyvault-secret.bicep' = {
   }
   scope: resourceGroup(rgName)
 }
+
+module appService_MiniSteam 'shared/appservice.bicep' = {
+  name: 'appServiceModule'
+  params: {
+    env: env
+    location: location
+    appName: 'portfolio-games-ministeam-api'
+    appServicePlanName: appServicePlan.outputs.appServicePlanName
+    dotnetVersion: '9.0' // can override if needed
+  }
+  scope: resourceGroup(rgName)
+  dependsOn: [
+    resGroup
+  ]
+}
+

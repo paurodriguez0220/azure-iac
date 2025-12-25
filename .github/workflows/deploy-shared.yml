@@ -1,4 +1,4 @@
-name: Deploy Bicep (Subscription-level)
+name: Deploy Portfolio Games Bicep
 
 on:
   push:
@@ -25,4 +25,4 @@ jobs:
           az deployment sub create \
             --location southeastasia \
             --template-file bicep/rg-portfolio-games.bicep \
-            --parameters env=dev
+            --parameters env=dev sqlAdmin=${{ secrets.SQL_ADMIN }} sqlPassword=${{ secrets.SQL_PASSWORD }}

@@ -76,6 +76,23 @@ module sql 'shared/sqlserver.bicep' = {
   ]
 }
 
+
+/* -----------------------------
+   6️⃣ Static Web App (React)
+--------------------------------*/
+module staticWebApp 'shared/staticwebapp.bicep' = {
+  name: 'staticWebAppModule'
+  params: {
+    location: location
+    env: env
+    appName: 'portfolio-games-minesweeper'
+  }
+  scope: resourceGroup(rgName)
+  dependsOn: [
+    resGroup
+  ]
+}
+
 /* -----------------------------
    5️⃣ Key Vault + SQL Secret
 --------------------------------*/

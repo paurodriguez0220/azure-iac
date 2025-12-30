@@ -84,9 +84,9 @@ module sql 'shared/sqlserver.bicep' = {
 module staticWebApp 'shared/staticwebapp.bicep' = {
   name: 'staticWebAppModule'
   params: {
-    location: location
+    location: swaLocation
     env: env
-    appName: 'portfolio-games-minesweeper'
+    appName: 'swa-portfolio-games-minesweeper'
   }
   scope: resourceGroup(rgName)
   dependsOn: [
@@ -101,7 +101,7 @@ module keyVault 'shared/keyvault.bicep' = {
   name: 'keyVaultModule'
   params: {
     env: env
-    location: swaLocation
+    location: location
     appName: 'portfolio-game'
   }
   scope: resourceGroup(rgName)

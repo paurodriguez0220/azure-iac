@@ -1,5 +1,6 @@
 targetScope = 'subscription'
 param location string = 'southeastasia'
+param swaLocation string = 'eastasia'
 param sqlAdmin string
 @secure()
 param sqlPassword string
@@ -100,7 +101,7 @@ module keyVault 'shared/keyvault.bicep' = {
   name: 'keyVaultModule'
   params: {
     env: env
-    location: location
+    location: swaLocation
     appName: 'portfolio-game'
   }
   scope: resourceGroup(rgName)

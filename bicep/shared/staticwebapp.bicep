@@ -9,10 +9,8 @@ resource staticWebApp 'Microsoft.Web/staticSites@2023-01-01' = {
     name: 'Free'
   }
   properties: {
-    branch: 'main'
     buildProperties: {
-      appLocation: '/'
-      outputLocation: 'build'
+      skipGithubActionWorkflowGeneration: true
     }
   }
 }

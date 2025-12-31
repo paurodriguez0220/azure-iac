@@ -81,7 +81,20 @@ module sql 'shared/sqlserver.bicep' = {
 /* -----------------------------
    6️⃣ Static Web App (React)
 --------------------------------*/
-module staticWebApp 'shared/staticwebapp.bicep' = {
+module staticMiniSteamUI 'shared/staticwebapp.bicep' = {
+  name: 'staticWebAppModule'
+  params: {
+    location: swaLocation
+    env: env
+    appName: 'swa-portfolio-games-ministeam'
+  }
+  scope: resourceGroup(rgName)
+  dependsOn: [
+    resGroup
+  ]
+}
+
+module staticMinesweeper 'shared/staticwebapp.bicep' = {
   name: 'staticWebAppModule'
   params: {
     location: swaLocation
@@ -93,6 +106,7 @@ module staticWebApp 'shared/staticwebapp.bicep' = {
     resGroup
   ]
 }
+
 
 /* -----------------------------
    5️⃣ Key Vault + SQL Secret

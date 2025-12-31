@@ -82,7 +82,7 @@ module sql 'shared/sqlserver.bicep' = {
    6️⃣ Static Web App (React)
 --------------------------------*/
 module staticMiniSteamUI 'shared/staticwebapp.bicep' = {
-  name: 'staticWebAppModule'
+  name: 'staticMiniSteamUIModule'
   params: {
     location: swaLocation
     env: env
@@ -95,7 +95,7 @@ module staticMiniSteamUI 'shared/staticwebapp.bicep' = {
 }
 
 module staticMinesweeper 'shared/staticwebapp.bicep' = {
-  name: 'staticWebAppModule'
+  name: 'staticMinesweeperModule'
   params: {
     location: swaLocation
     env: env

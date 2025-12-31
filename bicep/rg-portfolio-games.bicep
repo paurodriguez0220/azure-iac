@@ -108,7 +108,7 @@ module staticMinesweeper 'shared/staticwebapp.bicep' = {
 }
 
 module static2048'shared/staticwebapp.bicep' = {
-  name: 'staticMinesweeperModule'
+  name: 'static2048Module'
   params: {
     location: swaLocation
     env: env

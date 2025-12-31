@@ -107,6 +107,19 @@ module staticMinesweeper 'shared/staticwebapp.bicep' = {
   ]
 }
 
+module static2048'shared/staticwebapp.bicep' = {
+  name: 'staticMinesweeperModule'
+  params: {
+    location: swaLocation
+    env: env
+    appName: 'swa-portfolio-games-2048'
+  }
+  scope: resourceGroup(rgName)
+  dependsOn: [
+    resGroup
+  ]
+}
+
 
 /* -----------------------------
    5️⃣ Key Vault + SQL Secret

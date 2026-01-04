@@ -107,7 +107,7 @@ module staticMinesweeper 'shared/staticwebapp.bicep' = {
   ]
 }
 
-module static2048'shared/staticwebapp.bicep' = {
+module static2048 'shared/staticwebapp.bicep' = {
   name: 'static2048Module'
   params: {
     location: swaLocation
@@ -119,6 +119,20 @@ module static2048'shared/staticwebapp.bicep' = {
     resGroup
   ]
 }
+
+module staticSnake 'shared/staticwebapp.bicep' = {
+  name: 'staticSnakeModule'
+  params: {
+    location: swaLocation
+    env: env
+    appName: 'swa-portfolio-games-snake'
+  }
+  scope: resourceGroup(rgName)
+  dependsOn: [
+    resGroup
+  ]
+}
+
 
 
 /* -----------------------------

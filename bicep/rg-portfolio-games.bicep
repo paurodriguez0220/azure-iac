@@ -95,6 +95,24 @@ module blobStorage 'shared/blobstorage.bicep' = {
 }
 
 /* -----------------------------
+   6️⃣ Blob Container Module
+--------------------------------*/
+module blobContainer 'shared/blobcontainer.bicep' = {
+  name: 'blobContainerModule'
+  params: {
+    storageAccountName: blobStorage.outputs.storageAccountName
+    containerName: 'gameassets'
+  }
+  scope: resourceGroup(rgName)
+  dependsOn: [
+    blobStorage
+  ]
+}
+
+// Output the container name
+output blobContainerName string = blobContainer.outputs.containerName
+
+/* -----------------------------
    6️⃣ Static Web App (React)
 --------------------------------*/
 module staticMiniSteamUI 'shared/staticwebapp.bicep' = {

@@ -86,7 +86,7 @@ module blobStorage 'shared/blobstorage.bicep' = {
   params: {
     location: location
     env: env
-    appName: 'portfolio-games'
+    appName: 'portfoliogames'
   }
   scope: resourceGroup(rgName) // use your known resource group
   dependsOn: [

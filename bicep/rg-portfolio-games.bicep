@@ -79,6 +79,22 @@ module sql 'shared/sqlserver.bicep' = {
 
 
 /* -----------------------------
+   5️⃣ Blob Storage Module
+--------------------------------*/
+module blobStorage 'shared/blobstorage.bicep' = {
+  name: 'blobStorageModule'
+  params: {
+    location: location
+    env: env
+    appName: 'portfolio-games'
+  }
+  scope: resourceGroup(rgName) // use your known resource group
+  dependsOn: [
+    resGroup  // assuming resGroup is the resource group creation step
+  ]
+}
+
+/* -----------------------------
    6️⃣ Static Web App (React)
 --------------------------------*/
 module staticMiniSteamUI 'shared/staticwebapp.bicep' = {
